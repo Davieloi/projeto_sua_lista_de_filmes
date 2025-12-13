@@ -1,0 +1,120 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corpo da página */
+body {
+    font-family: Arial, Tahoma, sans-serif;
+    background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
+    color: #e0e0e0;
+    min-height: 100vh;
+    padding: 40px;
+}
+
+/* Títulos */
+h1 {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 2.5em;
+    color: #ffffff;
+}
+
+h2 {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    text-align: center;
+    color: #f5c518; 
+}
+
+
+p {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 30px;
+    color: #bdbdbd;
+    line-height: 1.6;
+}
+
+/* Formulário */
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #1f1f1f;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Labels */
+label {
+    font-weight: 600;
+    font-size: 0.95em;
+}
+
+/* Inputs, select e textarea */
+input,
+select,
+textarea {
+    background-color: #2a2a2a;
+    color: #ffffff;
+    border: 1px solid #3a3a3a;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 0.95em;
+    transition: all 0.3s ease;
+}
+
+/* Placeholder */
+input::placeholder,
+textarea::placeholder {
+    color: #9e9e9e;
+}
+
+/* Foco */
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #f5c518;
+    box-shadow: 0 0 0 2px rgba(245, 197, 24, 0.3);
+}
+
+/* Textarea */
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Lista de registros */
+ul {
+    max-width: 600px;
+    margin: 20px auto;
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    background-color: #1f1f1f;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border-left: 5px solid #f5c518;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    body {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+}

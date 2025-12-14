@@ -141,3 +141,19 @@ ul li {
         font-size: 2em;
     }
 }
+
+@media (max-width: 768px) {
+    .btn {
+        font-size: 17px;
+        padding: 14px 26px;
+    }
+}
+
+@media (max-width: 480px) {
+    .btn {
+        width: 100%;         
+        padding: 16px;
+        font-size: 18px;
+        border-radius: 10px;
+    }
+}

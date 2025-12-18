@@ -1,11 +1,11 @@
-/* Reset básico */
+/* RESET BÁSICO */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Corpo da página */
+/* CORPO DA PÁGINA */
 body {
     font-family: Arial, Tahoma, sans-serif;
     background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
@@ -14,7 +14,7 @@ body {
     padding: 40px;
 }
 
-/* Títulos */
+/* TÍTULOS E TEXTO */
 h1 {
     text-align: center;
     margin-bottom: 10px;
@@ -26,7 +26,7 @@ h2 {
     margin-top: 30px;
     margin-bottom: 15px;
     text-align: center;
-    color: #f5c518; 
+    color: #f5c518;
 }
 
 p {
@@ -37,7 +37,7 @@ p {
     line-height: 1.6;
 }
 
-/* Formulário */
+/* FORMULÁRIO */
 form {
     max-width: 600px;
     margin: 0 auto;
@@ -50,13 +50,13 @@ form {
     gap: 12px;
 }
 
-/* Labels */
+/* LABELS */
 label {
     font-weight: 600;
     font-size: 0.95em;
 }
 
-/* Inputs, select e textarea */
+/* INPUTS, SELECT e TEXTAREA */
 input,
 select,
 textarea {
@@ -69,13 +69,13 @@ textarea {
     transition: all 0.3s ease;
 }
 
-/* Placeholder */
+/* PLACEHOLDER */
 input::placeholder,
 textarea::placeholder {
     color: #9e9e9e;
 }
 
-/* Foco */
+/* FOCO */
 input:focus,
 select:focus,
 textarea:focus {
@@ -84,13 +84,13 @@ textarea:focus {
     box-shadow: 0 0 0 2px rgba(245, 197, 24, 0.3);
 }
 
-/* Textarea */
+/* TEXTAREA */
 textarea {
     resize: vertical;
     min-height: 80px;
 }
 
-/* Estilo base */
+/* BOTÕES PADRÃO */
 .btn {
     padding: 12px 24px;
     border: none;
@@ -101,20 +101,55 @@ textarea {
     transition: all 0.3s ease;
 }
 
-/* Botão adicionar */
+/* BOTÃO ADICIONAR */
 .btn-submit {
     background: linear-gradient(135deg, #f5c518, #d4a514);
     color: #1c1c1c;
 }
 
-/* Botão Reset */
+/* BOTÃO RESET */
 .btn-reset {
     background-color: #3a3a3a;
     color: #e0e0e0;
     border: 1px solid #555;
 }
 
-/* Lista de registros */
+/* AÇÕES (IMPORTAR / EXPORTAR) */
+.acoes {
+    max-width: 600px;
+    margin: 30px auto;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.acoes input[type="file"] {
+    flex: 1;
+    background-color: #2a2a2a;
+    color: #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    border: 1px solid #3a3a3a;
+}
+
+.acoes button {
+    background: linear-gradient(135deg, #444, #222);
+    color: #fff;
+    border: 1px solid #555;
+    padding: 12px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.acoes button:hover {
+    background: linear-gradient(135deg, #f5c518, #d4a514);
+    color: #1c1c1c;
+}
+
+/* LISTA DE FILMES */
 ul {
     max-width: 600px;
     margin: 20px auto;
@@ -129,29 +164,85 @@ ul li {
     margin-bottom: 10px;
     border-left: 5px solid #f5c518;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
-/* Responsividade */
+/* TÍTULOS DOS FILMES */
+ul li strong {
+    font-size: 1.1em;
+    color: #f5c518;
+}
+
+/* TEXTO DESCRIÇÃO */
+ul li p {
+    margin: 5px 0;
+    color: #cfcfcf;
+    font-size: 0.95em;
+}
+
+/* BOTÕES EDITAR / EXCLUIR */
+ul li button {
+    margin-top: 6px;
+    margin-right: 6px;
+    padding: 8px 14px;
+    font-size: 0.85em;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* EDITAR */
+ul li button:first-of-type {
+    background-color: #2e7d32;
+    color: #fff;
+}
+
+/* APAGAR */
+ul li button:last-of-type {
+    background-color: #c62828;
+    color: #fff;
+}
+
+ul li button:hover {
+    opacity: 0.85;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+    body {
+        padding: 25px;
+    }
+
+    h1 {
+        font-size: 2.1em;
+    }
+}
+
 @media (max-width: 600px) {
     body {
         padding: 20px;
     }
 
-    h1 {
-        font-size: 2em;
+    .acoes {
+        flex-direction: column;
     }
-}
 
-@media (max-width: 768px) {
-    .btn {
-        font-size: 17px;
-        padding: 14px 26px;
+    ul li {
+        padding: 18px;
+    }
+
+    ul li button {
+        width: 100%;
+        margin: 4px 0;
     }
 }
 
 @media (max-width: 480px) {
     .btn {
-        width: 100%;         
+        width: 100%;
         padding: 16px;
         font-size: 18px;
         border-radius: 10px;

@@ -1,42 +1,52 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biblioteca de Filmes</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<link rel="stylesheet" href="style.css">
+
+
     <h1>Catálogo de Filmes</h1>
     <p>Esta página foi desenvolvida para permitir o cadastro, visualização e gerenciamento de filmes através de um formulário interativo</p>
     <h2>Adicionar Novo Filme</h2>
     <form id="formFilme">
-        <label for="nome">Nome do Filme:</label>
-        <input type="text" name="nome" id="nome" placeholder="Ex: Velozes & Furiosos">
-        <label for="genero">Gênero:</label>
-        <input type="text" name="genero" id="genero" placeholder="Ex: Ação/Crime">
-        <label for="nota">Nota do Filme:</label>
-        <select name="nota" id="nota">
+
+      <div class="linha">
+        <div class="campo">
+          <label for="nome">Nome do Filme:</label>
+          <input type="text" name="nome" id="nome" placeholder="Ex: Velozes & Furiosos">
+        </div>
+
+        <div class="campo">
+          <label for="genero">Gênero:</label>
+          <input type="text" name="nome" id="genero" placeholder="Ex: Ação/Crime">
+        </div>
+      </div>
+
+      <div class="linha">
+        <div class="campo">
+          <label for="nota">Nota:</label>
+          <select name="nota" id="nota">
             <option value="0">0</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-        </select>
-        <label for="lancamento">Ano de Lançamento:</label>
-        <input type="month" name="lancamento" id="lancamento">
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="lancamento">Lançamento:</label>
+          <input type="month" name="lancamento" id="lancamento">
+        </div>
+      </div>
+
+      <div class="campo">
         <label for="descricao">Descrição:</label>
-        <textarea name="descricao" id="descricao" placeholder="Fale um pouco sobre o filme"></textarea>
-        <button type="submit" class="btn btn-submit">Adicionar</button>
-        <button type="reset" class="btn btn-reset">Cancelar</button>
-        
+        <textarea name="descricao" id="descricao"></textarea>
+      </div>
+
+      <button class="btn btn-submit">Adicionar</button>
+      <button class="btn btn-reset">Cancelar</button>
+
     </form>
+
     <div class="lista_da_div">
         <h2>Lista de Filmes</h2>
         <div class="acoes">
@@ -47,5 +57,3 @@
         <ul id="listaFilmes"></ul>
     </div>
     <script src="script.js"></script>
-</body>
-</html>

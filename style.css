@@ -283,6 +283,7 @@ textarea {
     .caixa-do-filme{
         padding: 10px;
         font-size: 0.9em;
+        min-height: 40px;
     }
 
     /* Ajuste para que os botões de ação do card não fiquem apertados */
@@ -354,6 +355,7 @@ textarea {
     .caixa-do-filme{
         padding: 8px;
         font-size: 0.9em;
+        min-height: 40px;
     }
 
     /* Seletor corrigido para o textarea (usando o ID) */

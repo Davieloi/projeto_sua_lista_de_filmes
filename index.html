@@ -16,12 +16,12 @@
       <div class="linha">
         <div class="campo">
           <label for="nome">Nome do Filme:</label>
-          <input type="text" name="nome" id="nome" placeholder="Ex: Velozes & Furiosos">
+          <input type="text" name="nome" id="nome" placeholder="Ex: Velozes & Furiosos" required>
         </div>
 
         <div class="campo">
           <label for="genero">Gênero:</label>
-          <input type="text" name="nome" id="genero" placeholder="Ex: Ação/Crime">
+          <input type="text" name="nome" id="genero" placeholder="Ex: Ação/Crime" required>
         </div>
       </div>
 
@@ -40,17 +40,17 @@
 
         <div class="campo">
           <label for="lancamento">Lançamento:</label>
-          <input type="month" name="lancamento" id="lancamento">
+          <input type="month" name="lancamento" id="lancamento" min="1900-01" max="2026-12">
         </div>
       </div>
 
       <div class="campo">
         <label for="descricao">Descrição:</label>
-        <textarea name="descricao" id="descricao" placeholder="Ex: The Fast and the Furious é uma franquia de mídia e Universo Compartilhado centrado em uma série de filmes de ação que estão amplamente preocupados com corridas de rua, assaltos, espiões e família. A franquia também inclui curtas-metragens, uma série de televisão, videogames e atrações de parques temáticos."></textarea>
+        <textarea name="descricao" id="descricao" placeholder="Esse filme conta..."></textarea>
       </div>
 
-      <button class="btn btn-submit">Adicionar</button>
-      <button class="btn btn-reset">Cancelar</button>
+      <button type="submit" class="btn btn-submit">Adicionar</button>
+      <button type="reset" class="btn btn-reset">Cancelar</button>
 
     </form>
 
@@ -58,8 +58,8 @@
         <h2>Lista de Filmes</h2>
         <div class="acoes">
             <input type="file" id="arquivoCSV" accept=".csv">
-            <button id="btnImportar btna">Importar</button>
-            <button id="btnExportar btna">Exportar</button>
+            <button id="btnImportar" class="btna">Importar</button>
+            <button id="btnExportar" class="btna">Exportar</button>
         </div>
         <ul id="listaFilmes"></ul>
     </div>

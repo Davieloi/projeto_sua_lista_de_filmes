@@ -15,17 +15,16 @@ function fazer_submit(event){
     const li = document.createElement('li');
 
     li.innerHTML = `
-       <strong>&#x1F3AC ${nome}</strong>
-       <p><span class="label">&#x1F3AD Gênero:</span> ${genero}</p>
-       <p><span class="label">&#x2B50 Nota:</span> ${nota}/5</p>
-       <p><span class="label">&#x1F4C5 Lançamento:</span> ${lancamento}</p>
-       <p><span class="label">&#x1F4DD Descrição:</span> ${descricao}</p>
-
-         <div class="acoes-filme">
+        <strong>&#x1F3AC ${nome}</strong>
+        <p><span class="label">&#x1F3AD Gênero:</span> ${genero}</p>
+        <p><span class="label">&#x2B50 Nota:</span> ${nota}/5</p>
+        <p><span class="label">&#x1F4C5 Lançamento:</span> ${lancamento}</p>
+        <div class="caixa-do-filme">${descricao}</div>
+        <div class="acoes-filme">
             <button class="btn-editar">Editar</button>
             <button class="btn-apagar">Apagar</button>
         </div>
     `;
     ul.appendChild(li);
-    form.reset;
+    form.reset();
 };

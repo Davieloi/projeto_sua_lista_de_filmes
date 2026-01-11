@@ -1,119 +1,94 @@
-// 1. Seleção de Elementos Globais
 const form = document.getElementById('formFilme');
 const ul = document.getElementById('listaFilmes');
 
+// 1. ADICIONAR FILME
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
 
-form.addEventListener("submit", fazer_submit);
-document.getElementById('btnImportar').addEventListener('click', importar_os_coisas);
-document.getElementById('btnExportar').addEventListener('click', exportar_do_formulario);
+    const filme = {
+        nome: document.getElementById('nome').value,
+        genero: document.getElementById('genero').value,
+        nota: document.getElementById('nota').value,
+        lancamento: document.getElementById('lancamento').value,
+        descricao: document.getElementById('descricao').value
+    };
 
+    criarCard(filme);
+    form.reset();
+});
 
-// --- FUNÇÃO 1: ADICIONAR AO VISUAL (SUBMIT) ---
-function fazer_submit(event) {
-    event.preventDefault(); 
-
-    const nome = document.getElementById('nome').value.trim();
-    const genero = document.getElementById('genero').value.trim();
-    const nota = document.getElementById('nota').value;
-    const lancamento = document.getElementById('lancamento').value;
-    const descricao = document.getElementById('descricao').value;
-
-    if (nome === "" || genero === "") {
-        alert("Preencha Nome e Gênero para adicionar à lista!");
-        return;
-    }
-
+// 2. CRIAR CARD NA TELA
+function criarCard(filme) {
     const li = document.createElement('li');
-    li.className = "card-filme";
+    li.className = 'card-filme';
+    
+    // Guardar dados para o botão editar
+    li.dataset.nome = filme.nome;
+    li.dataset.genero = filme.genero;
+    li.dataset.nota = filme.nota;
+    li.dataset.lancamento = filme.lancamento;
+    li.dataset.descricao = filme.descricao;
+
     li.innerHTML = `
-        <strong>🎬 ${nome}</strong>
-        <p><span class="label">🎭 Gênero:</span> ${genero}</p>
-        <p><span class="label">⭐ Nota:</span> ${nota}/5</p>
-        <p><span class="label">📅 Lançamento:</span> ${lancamento}</p>
-        <div class="caixa-do-filme">${descricao}</div>
+        <strong>🎬 ${filme.nome}</strong>
+        <p>🎭 Gênero: ${filme.genero} |   ⭐ Nota: ${filme.nota}/5</p>
+        <p>📅 Lançamento: ${filme.lancamento}</p>
+        <p style="font-style: italic; color: #aaa;">${filme.descricao}</p>
         <div class="acoes-filme">
-            <button class="btn-apagar" onclick="remover_card(this)">Apagar</button>
+            <button class="btn-editar" onclick="editarFilme(this)">Editar</button>
+            <button class="btn-apagar" onclick="this.parentElement.parentElement.remove()">Apagar</button>
         </div>
     `;
-
     ul.appendChild(li);
-    form.reset(); 
 }
 
+// 3. EDITAR FILME
+function editarFilme(botao) {
+    const li = botao.closest('li');
+    
+    document.getElementById('nome').value = li.dataset.nome;
+    document.getElementById('genero').value = li.dataset.genero;
+    document.getElementById('nota').value = li.dataset.nota;
+    document.getElementById('lancamento').value = li.dataset.lancamento;
+    document.getElementById('descricao').value = li.dataset.descricao;
 
-// --- FUNÇÃO 2: REMOVER CARD DA TELA ---
-function remover_card(botao) {
-    const card = botao.closest('li');
-    card.remove();
+    li.remove();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-
-// --- FUNÇÃO 3: IMPORTAR CSV PARA O FORMULÁRIO ---
-function importar_os_coisas() {
+// 4. IMPORTAR CSV
+document.getElementById('btnImportar').addEventListener('click', function() {
     const input = document.getElementById('arquivoCSV');
+    if (input.files.length === 0) return alert("Selecione um arquivo!");
 
-    if (input.files.length === 0) {
-        alert("Por favor, selecione um arquivo .csv primeiro!");
-        return;
-    }
-
-    const arquivo = input.files[0];
     const leitor = new FileReader();
-
-    leitor.onload = function(evento) {
-        const conteudo = evento.target.result;
-        const dados = conteudo.split(";"); 
-
+    leitor.onload = function(e) {
+        const dados = e.target.result.split(";");
         if (dados.length >= 5) {
             document.getElementById('nome').value = dados[0].trim();
             document.getElementById('genero').value = dados[1].trim();
             document.getElementById('nota').value = dados[2].trim();
             document.getElementById('lancamento').value = dados[3].trim();
             document.getElementById('descricao').value = dados[4].trim();
-            alert("Dados carregados no formulário!");
-        } else {
-            alert("Arquivo com formato incorreto.");
         }
     };
+    leitor.readAsText(input.files[0]);
+});
 
-    leitor.readAsText(arquivo);
-}
-
-
-// --- FUNÇÃO 4: EXPORTAR COM MENSAGEM DE DOWNLOAD ---
-function exportar_do_formulario() {
-    const nome = document.getElementById('nome').value.trim();
-    const genero = document.getElementById('genero').value.trim();
-    const nota = document.getElementById('nota').value;
-    const lancamento = document.getElementById('lancamento').value;
-    const descricao = document.getElementById('descricao').value.trim();
-
-    if (nome === "" || genero === "") {
-        alert("Erro: Nome e Gênero são obrigatórios para exportar!");
-        return;
-    }
-
-    // Criando o conteúdo
-    const cabecalho = "Nome;Gênero;Nota;Lançamento;Descrição\n";
-    const linha = `${nome.replace(/;/g, ',')};${genero.replace(/;/g, ',')};${nota};${lancamento};${descricao.replace(/;/g, ',')}`;
+// 5. EXPORTAR FORMULÁRIO
+document.getElementById('btnExportar').addEventListener('click', function() {
+    const nome = document.getElementById('nome').value;
+    const genero = document.getElementById('genero').value;
     
-    const blob = new Blob([cabecalho + linha], { type: 'text/csv;charset=utf-8;' });
+    if (!nome || !genero) return alert("Preencha Nome e Gênero!");
+
+    const dados = `${nome};${genero};${document.getElementById('nota').value};${document.getElementById('lancamento').value};${document.getElementById('descricao').value}`;
+    const blob = new Blob([dados], { type: 'text/csv' });
     const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
     
-    const link = document.createElement("a");
     link.href = url;
-
-    const nomeArquivoLimpo = nome.toLowerCase().replace(/\s+/g, '_') + ".csv";
-    link.download = nomeArquivoLimpo;
-    
-    // --- ADICIONANDO A MENSAGEM ---
-    // Avisa o usuário que o processo começou
-    alert("Preparando arquivo: " + nomeArquivoLimpo + "\nO download começará em instantes!");
-
+    link.download = `${nome.toLowerCase().replace(/ /g, "_")}.csv`;
+    alert("Iniciando download de: " + link.download);
     link.click();
-
-    // Feedback visual opcional no console para conferência
-    console.log("Download iniciado: " + nomeArquivoLimpo);
-
-    URL.revokeObjectURL(url);
-}
+});

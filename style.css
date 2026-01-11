@@ -216,7 +216,7 @@ textarea {
 .label {
     color: var(--gold);
     font-weight: bold;
-    min-width: 120px;
+    min-width: 100px;
     display: inline-block;
 }
 
@@ -225,9 +225,11 @@ textarea {
     border: 1px solid #3a3a3a;
     border-radius: 8px;
     padding: 15px;
+    margin: 10px 0;
     text-align: justify;
     text-align: center;
     line-height: 1.5em;
+    color: #d0d0d0;
     
 }
 
@@ -245,6 +247,7 @@ textarea {
     font-weight: bold;
     cursor: pointer;
     transition: 0.3s;
+    flex: 1;
 }
 
 .btn-editar {

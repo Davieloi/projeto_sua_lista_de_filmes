@@ -21,7 +21,7 @@
 
         <div class="campo">
           <label for="genero">Gênero:</label>
-          <input type="text" name="nome" id="genero" placeholder="Ex: Ação/Crime" required>
+          <input type="text" name="genero" id="genero" placeholder="Ex: Ação/Crime" required>
         </div>
       </div>
 
@@ -46,11 +46,14 @@
 
       <div class="campo">
         <label for="descricao">Descrição:</label>
-        <textarea name="descricao" id="descricao" placeholder="Esse filme conta..."></textarea>
+        <textarea name="descricao" id="descricao" placeholder="Esse filme conta..." aria-label="Descrição do filme"></textarea>
       </div>
 
-      <button type="submit" class="btn btn-submit">Adicionar</button>
-      <button type="reset" class="btn btn-reset">Cancelar</button>
+      <div class="linha-botoes">
+        <button type="submit" class="btn btn-submit">Adicionar</button>
+        <button type="button" id="btnExportar" class="btn btn-exportar">Exportar</button>
+        <button type="reset" class="btn btn-reset">Cancelar</button>
+      </div>
 
     </form>
 
@@ -59,7 +62,6 @@
         <div class="acoes">
             <input type="file" id="arquivoCSV" accept=".csv">
             <button id="btnImportar" class="btna">Importar</button>
-            <button id="btnExportar" class="btna">Exportar</button>
         </div>
         <ul id="listaFilmes"></ul>
     </div>

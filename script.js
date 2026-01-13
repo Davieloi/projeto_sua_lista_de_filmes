@@ -1,15 +1,11 @@
-// ================================
 // REFERÊNCIAS
-// ================================
 const form = document.getElementById('formFilme');
 const ul = document.getElementById('listaFilmes');
 const btnImportar = document.getElementById('btnImportar');
 const btnExportar = document.getElementById('btnExportar');
 const inputCSV = document.getElementById('arquivoCSV');
 
-// ================================
 // 1. ADICIONAR FILME
-// ================================
 form.addEventListener('submit', function (e) {
     e.preventDefault();
 
@@ -25,12 +21,10 @@ form.addEventListener('submit', function (e) {
     form.reset();
 });
 
-// ================================
 // 2. CRIAR CARD
-// ================================
 function criarCard(filme) {
     const li = document.createElement('li');
-    li.classList.add('card-filme'); // ✅ corrigido
+    li.classList.add('card-filme'); 
 
     // Dados para edição
     li.dataset.nome = filme.nome;
@@ -71,9 +65,7 @@ function criarCard(filme) {
     ul.appendChild(li);
 }
 
-// ================================
 // 3. EDITAR FILME
-// ================================
 function editarFilme(li) {
     document.getElementById('nome').value = li.dataset.nome;
     document.getElementById('genero').value = li.dataset.genero;
@@ -89,18 +81,14 @@ function editarFilme(li) {
     });
 }
 
-// ================================
 // 4. APAGAR FILME
-// ================================
 function apagarFilme(li) {
     if (confirm('Deseja realmente apagar este filme?')) {
         li.remove();
     }
 }
 
-// ================================
 // 5. IMPORTAR CSV
-// ================================
 btnImportar.addEventListener('click', function () {
     if (!inputCSV.files.length) {
         alert('Selecione um arquivo!');
@@ -126,9 +114,7 @@ btnImportar.addEventListener('click', function () {
     leitor.readAsText(inputCSV.files[0]); // ✅ corrigido
 });
 
-// ================================
 // 6. EXPORTAR CSV
-// ================================
 btnExportar.addEventListener('click', function () {
     const nome = document.getElementById('nome').value.trim();
     const genero = document.getElementById('genero').value.trim();
@@ -154,5 +140,5 @@ btnExportar.addEventListener('click', function () {
     link.download = `${nome.toLowerCase().replace(/\s+/g, '_')}.csv`;
 
     link.click();
-    URL.revokeObjectURL(url); // ✅ boa prática
+    URL.revokeObjectURL(url);
 });

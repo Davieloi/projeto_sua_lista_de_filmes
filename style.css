@@ -14,8 +14,8 @@
     --gold-dark: #d4a514;
     --text-light: #e0e0e0;
     --text-muted: #bdbdbd;
-    --danger: #b71c1c;
-    --danger-dark: #7f0000;
+    --danger: #8b2c2c;
+    --danger-dark: #5f1d1d;
     --green-edit: #2e7d32; 
     --green-export: #1b5e20; 
 }
@@ -200,6 +200,12 @@ textarea {
     font-weight: bold;
 }
 
+.btna:hover {
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: #1c1c1c;
+}
+
+
 /*.acoes button {
     background: linear-gradient(135deg, #444, #222);
     color: #fff;
@@ -300,8 +306,8 @@ strong{
 }
 
 .btn-editar {
-    background: linear-gradient(135deg, var(--green-edit), #1c8024);
-    color: white;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: #1c1c1c;
 }
 
 .btn-editar:hover{
@@ -389,17 +395,15 @@ strong{
     .acoes {
         display: flex;
         flex-wrap: wrap;      /* Quebra de linha */
-        justify-content: center; 
         gap: 10px;
     }
 
     .acoes input[type="file"]{
         flex: 0 0 100%;       
-        margin-bottom: 5px;
     }
     .acoes button {
         flex: 1;             /* Os botões dividem a segunda linha */
-        min-width: 100px;
+        min-width: 0;
     }
 
     .acoes-filme {

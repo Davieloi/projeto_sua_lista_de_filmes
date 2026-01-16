@@ -5,7 +5,11 @@ const btnImportar = document.getElementById('btnImportar');
 const btnExportar = document.getElementById('btnExportar');
 const inputCSV = document.getElementById('arquivoCSV');
 
-// 1. ADICIONAR FILME
+//Array dos filmes
+let filmes = [];
+let indice_edicao = null;
+
+// ADICIONAR FILME
 form.addEventListener('submit', function (e) {
     e.preventDefault();
 
@@ -17,78 +21,70 @@ form.addEventListener('submit', function (e) {
         descricao: document.getElementById('descricao').value.trim()
     };
 
-    criarCard(filme);
+    if (indice_edicao === null) {
+        filmes.push(filme);
+    } else {
+        filmes[indice_edicao] = filme;
+        indice_edicao = null;
+    }
+
+    renderizarLista();
     form.reset();
 });
 
-// 2. CRIAR CARD
-function criarCard(filme) {
-    const li = document.createElement('li');
-    li.classList.add('card-filme'); 
 
-    // Dados para edição
-    li.dataset.nome = filme.nome;
-    li.dataset.genero = filme.genero;
-    li.dataset.nota = filme.nota;
-    li.dataset.lancamento = filme.lancamento;
-    li.dataset.descricao = filme.descricao;
+// Renderização
+function renderizarLista() {
+    ul.innerHTML = '';
 
-    const titulo = document.createElement('strong');
-    titulo.textContent = `🎬 ${filme.nome}`;
+    filmes.forEach((filme, index) => {
+        const li = document.createElement('li');
+        li.classList.add('card-filme');
 
-    const info = document.createElement('p');
-    info.textContent = `🎭 Gênero: ${filme.genero} | ⭐ Nota: ${filme.nota}/5`;
+        li.innerHTML = `
+            <strong>🎬 ${filme.nome}</strong>
+            <p>🎭 Gênero: ${filme.genero}  |  ⭐ Nota: ${filme.nota}/5</p>
+            <p>📅 Lançamento: ${filme.lancamento || 'Não informado'}</p>
+            <p style="font-style: italic; color: #aaa;">
+                ${filme.descricao || 'Sem descrição'}
+            </p>
+            <div class="acoes-filme">
+                <button class="btn-editar">Editar</button>
+                <button class="btn-apagar">Apagar</button>
+            </div>
+        `;
 
-    const data = document.createElement('p');
-    data.textContent = `📅 Lançamento: ${filme.lancamento || 'Não informado'}`;
+        li.querySelector('.btn-editar').addEventListener('click', () => editarFilme(index));
+        li.querySelector('.btn-apagar').addEventListener('click', () => apagarFilme(index));
 
-    const descricao = document.createElement('p');
-    descricao.textContent = filme.descricao || 'Sem descrição';
-    descricao.style.fontStyle = 'italic';
-    descricao.style.color = '#aaa';
-
-    const acoes = document.createElement('div');
-    acoes.classList.add('acoes-filme');
-
-    const btnEditar = document.createElement('button');
-    btnEditar.textContent = 'Editar';
-    btnEditar.classList.add('btn-editar');
-    btnEditar.addEventListener('click', () => editarFilme(li));
-
-    const btnApagar = document.createElement('button');
-    btnApagar.textContent = 'Apagar';
-    btnApagar.classList.add('btn-apagar');
-    btnApagar.addEventListener('click', () => apagarFilme(li));
-
-    acoes.append(btnEditar, btnApagar);
-    li.append(titulo, info, data, descricao, acoes);
-    ul.appendChild(li);
-}
-
-// 3. EDITAR FILME
-function editarFilme(li) {
-    document.getElementById('nome').value = li.dataset.nome;
-    document.getElementById('genero').value = li.dataset.genero;
-    document.getElementById('nota').value = li.dataset.nota;
-    document.getElementById('lancamento').value = li.dataset.lancamento;
-    document.getElementById('descricao').value = li.dataset.descricao;
-
-    li.remove();
-
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+        ul.appendChild(li);
     });
 }
 
-// 4. APAGAR FILME
-function apagarFilme(li) {
+// EDITAR FILME
+function editarFilme(index) {
+    const filme = filmes[index];
+
+    document.getElementById('nome').value = filme.nome;
+    document.getElementById('genero').value = filme.genero;
+    document.getElementById('nota').value = filme.nota;
+    document.getElementById('lancamento').value = filme.lancamento;
+    document.getElementById('descricao').value = filme.descricao;
+
+    indice_edicao = index;
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// APAGAR FILME
+function apagarFilme(index) {
     if (confirm('Deseja realmente apagar este filme?')) {
-        li.remove();
+        filmes.splice(index, 1);
+        renderizarLista();
     }
 }
 
-// 5. IMPORTAR CSV
+// IMPORTAR CSV
 btnImportar.addEventListener('click', function () {
     if (!inputCSV.files.length) {
         alert('Selecione um arquivo!');
@@ -96,49 +92,63 @@ btnImportar.addEventListener('click', function () {
     }
 
     const leitor = new FileReader();
-    leitor.onload = function (e) {
-        const dados = e.target.result.split(';');
 
-        if (dados.length < 5) {
+    leitor.onload = function (e) {
+        const filmesImportados = csvParaArray(e.target.result);
+
+        if (filmesImportados.length === 0) {
             alert('Arquivo CSV inválido!');
             return;
         }
 
-        document.getElementById('nome').value = dados[0].trim();
-        document.getElementById('genero').value = dados[1].trim();
-        document.getElementById('nota').value = dados[2].trim();
-        document.getElementById('lancamento').value = dados[3].trim();
-        document.getElementById('descricao').value = dados[4].trim();
+        filmes = filmes.concat(filmesImportados);
+        renderizarLista();
     };
 
-    leitor.readAsText(inputCSV.files[0]); // ✅ corrigido
+    leitor.readAsText(inputCSV.files[0]);
 });
+
+function csvParaArray(csvTexto) {
+    const linhas = csvTexto.trim().split('\n');
+    const resultado = [];
+
+    linhas.forEach(linha => {
+        const dados = linha.split(';');
+
+        if (dados.length >= 5) {
+            resultado.push({
+                nome: dados[0].trim(),
+                genero: dados[1].trim(),
+                nota: dados[2].trim(),
+                lancamento: dados[3].trim(),
+                descricao: dados[4].trim()
+            });
+        }
+    });
+
+    return resultado;
+}
+
+
 
 // 6. EXPORTAR CSV
 btnExportar.addEventListener('click', function () {
-    const nome = document.getElementById('nome').value.trim();
-    const genero = document.getElementById('genero').value.trim();
-
-    if (!nome || !genero) {
-        alert('Preencha Nome e Gênero!');
+    if (filmes.length === 0) {
+        alert('Não há filmes para exportar!');
         return;
     }
 
-    const dados = [
-        nome,
-        genero,
-        document.getElementById('nota').value,
-        document.getElementById('lancamento').value,
-        document.getElementById('descricao').value
-    ].join(';');
+    const csv = filmes.map(filme =>
+        `${filme.nome};${filme.genero};${filme.nota};${filme.lancamento};${filme.descricao}`
+    ).join('\n');
 
-    const blob = new Blob([dados], { type: 'text/csv' });
+    const blob = new Blob([csv], { type: 'text/csv' });
     const url = URL.createObjectURL(blob);
 
     const link = document.createElement('a');
     link.href = url;
-    link.download = `${nome.toLowerCase().replace(/\s+/g, '_')}.csv`;
-
+    link.download = 'filmes.csv';
     link.click();
+
     URL.revokeObjectURL(url);
 });

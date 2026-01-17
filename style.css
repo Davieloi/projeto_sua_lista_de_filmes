@@ -182,12 +182,14 @@ textarea {
 }
 
 .acoes input[type="file"] {
-    flex: 1;
+    flex: 1 1 100%;
+    max-width: 100%;
+    width: 100%;
+    min-width: 0; /* MUITO IMPORTANTE */
     background-color: #2a2a2a;
     color: #ccc;
     border-radius: 8px;
-    padding: 5px;
-    /*border: 1px solid #3a3a3a;*/
+    padding: 6px;
 }
 
 .btna{
@@ -386,10 +388,15 @@ strong{
         gap: 10px;
     }
 
-    .acoes input[type="file"]{
-        width: 80%;
-        flex: 0 0 100%;       
+    .acoes input[type="file"]{  
+        flex: 1 1 100%;
+        width: 100%;
+        max-width: 100%;
     }
+    .btna {
+        width: 100%;
+    }
+
     .acoes button {
         flex: 1;             /* Os botões dividem a segunda linha */
         min-width: 0;

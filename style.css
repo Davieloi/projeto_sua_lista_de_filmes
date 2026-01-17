@@ -205,18 +205,6 @@ textarea {
     color: #1c1c1c;
 }
 
-
-/*.acoes button {
-    background: linear-gradient(135deg, #444, #222);
-    color: #fff;
-    border: 1px solid #555;
-    padding: 12px 18px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
-}*/
-
 .acoes button:hover {
     background: linear-gradient(135deg, var(--gold), var(--gold-dark));
     color: #1c1c1c;
@@ -399,6 +387,7 @@ strong{
     }
 
     .acoes input[type="file"]{
+        width: 80%;
         flex: 0 0 100%;       
     }
     .acoes button {

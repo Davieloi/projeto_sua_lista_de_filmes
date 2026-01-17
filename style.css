@@ -24,12 +24,24 @@
 body {
     font-family: "Roboto", sans-serif;
     background: linear-gradient(135deg, var(--bg-dark), #1c1c1c);
+    background-image: url('imagens/fundo/fundo_do_site.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     color: var(--text-light);
     min-height: 100vh;
     padding: 40px;
 }
 
-/* Títulos h1,h2 e até o p (que ficou meio estranho) */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.65);
+    z-index: -1;
+}
+
+/* Títulos h1 e h2 */
 h1 {
     font-family: "Rubik Dirt", system-ui;
     font-weight: 400;

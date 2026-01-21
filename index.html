@@ -12,62 +12,54 @@
 </head>
 <body>
   <h1>Catálogo de Filmes</h1>
-    <p class="sub-titulo">Esta página foi desenvolvida para permitir o cadastro, visualização e gerenciamento de filmes através de um formulário interativo</p>
-    <h2>Informações do Filme</h2>
-    <form id="formFilme">
-
-      <div class="linha">
+  <p class="sub-titulo">Esta página foi desenvolvida para permitir o cadastro, visualização e gerenciamento de filmes através de um formulário interativo</p>
+  <div class="caixa_grande">
+    <aside class="formulario">
+      <h2>Informações do Filme</h2>
+      <form id="formFilme">
+            <label for="nome">Nome do Filme:</label>
+            <input type="text" name="nome" id="nome" placeholder="Ex: Velozes & Furiosos" required>
+            <label for="genero">Gênero:</label>
+            <input type="text" name="genero" id="genero" placeholder="Ex: Ação/Crime" required>
+        <div class="linha">
+          <div class="campo">
+            <label for="nota">Nota:</label>
+            <select name="nota" id="nota">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+          <div class="campo">
+            <label for="lancamento">Lançamento:</label>
+            <input type="number"  name="lancamento" id="lancamento" min="1800" max="2026">
+          </div>
+        </div>
         <div class="campo">
-          <label for="nome">Nome do Filme:</label>
-          <input type="text" name="nome" id="nome" placeholder="Ex: Velozes & Furiosos" required>
+          <label for="descricao">Descrição:</label>
+          <textarea name="descricao" id="descricao" placeholder="Esse filme conta..." aria-label="Descrição do filme"></textarea>
         </div>
-
-        <div class="campo">
-          <label for="genero">Gênero:</label>
-          <input type="text" name="genero" id="genero" placeholder="Ex: Ação/Crime" required>
+        <div class="linha-botoes">
+          <button type="submit" class="btn btn-submit">Adicionar</button>
+          <button type="reset" class="btn btn-reset">Cancelar</button>
         </div>
+      </form>
+    </aside>
+    <main class="conteudo_pricipal">
+      <div class="lista_da_div">
+          <h2>Lista de Filmes</h2>
+          <div class="acoes">
+              <input type="file" id="arquivoCSV" accept=".csv">
+              <button id="btnImportar" class="btna">Importar</button>
+              <button type="button" id="btnExportar" class="btna">Exportar</button>
+          </div>
+          <ul id="listaFilmes"></ul>
       </div>
-
-      <div class="linha">
-        <div class="campo">
-          <label for="nota">Nota:</label>
-          <select name="nota" id="nota">
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-        </div>
-
-        <div class="campo">
-          <label for="lancamento">Lançamento:</label>
-          <input type="number"  name="lancamento" id="lancamento" min="1800" max="2026">
-        </div>
-      </div>
-
-      <div class="campo">
-        <label for="descricao">Descrição:</label>
-        <textarea name="descricao" id="descricao" placeholder="Esse filme conta..." aria-label="Descrição do filme"></textarea>
-      </div>
-
-      <div class="linha-botoes">
-        <button type="submit" class="btn btn-submit">Adicionar</button>
-        <button type="reset" class="btn btn-reset">Cancelar</button>
-      </div>
-
-    </form>
-
-    <div class="lista_da_div">
-        <h2>Lista de Filmes</h2>
-        <div class="acoes">
-            <input type="file" id="arquivoCSV" accept=".csv">
-            <button id="btnImportar" class="btna">Importar</button>
-            <button type="button" id="btnExportar" class="btna">Exportar</button>
-        </div>
-        <ul id="listaFilmes"></ul>
-    </div>
-    <script src="script.js"></script>
+    </main>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>

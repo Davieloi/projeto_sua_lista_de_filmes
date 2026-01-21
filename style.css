@@ -41,7 +41,24 @@ body::before {
     z-index: -1;
 }
 
-/* Títulos h1 e h2 */
+.caixa_grande{
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+}
+
+.formulario{
+    width: 320px;              
+    position: sticky;
+    top: 20px;                  
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.conteudo_pricipal {
+    flex: 1;                    
+}
+
 h1 {
     font-family: "Rubik Dirt", system-ui;
     font-weight: 400;
@@ -68,7 +85,6 @@ h2 {
     line-height: 1.6;
 }
 
-/* Formulário */
 form {
     max-width: 600px;
     margin: 0 auto;
@@ -99,7 +115,6 @@ label {
     font-size: 0.9em;
 }
 
-/* Inputs */
 input,
 select,
 textarea {
@@ -329,19 +344,28 @@ strong{
 
 /* Responsividade com media */
 /* Responsividade para Tablets */
-@media (min-width: 601px) and (max-width: 1024px) {
+@media (min-width: 601px) and (max-width: 768px) {
     body {
         padding: 30px;
     }
 
-    /* O formulário pode ficar um pouco mais largo no tablet */
+    .caixa_grande {
+        flex-direction: column;
+    }
+
+    .formulario {
+        width: 100%;
+        position: static; /* remove o sticky no tablet */
+    }
+
+    /* O formulário pode ficar um pouco mais largo no tablet */ 
     form {
         max-width: 90%;
     }
 
     /* Transformar a lista em duas colunas */
     #listaFilmes {
-        max-width: 95%;
+        max-width: 100%;
         gap: 20px;
     }
     
@@ -383,6 +407,15 @@ strong{
 @media (max-width: 600px) {
     body {
         padding: 15px;
+    }
+
+    .caixa_grande {
+        flex-direction: column;
+    }
+
+    .formulario {
+        width: 100%;
+        position: static;       /* remove o sticky */
     }
     
     h1{

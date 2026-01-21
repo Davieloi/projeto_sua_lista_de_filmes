@@ -1,4 +1,4 @@
-// REFERÊNCIAS
+// referências
 const form = document.getElementById('formFilme');
 const ul = document.getElementById('listaFilmes');
 const btnImportar = document.getElementById('btnImportar');
@@ -9,7 +9,7 @@ const inputCSV = document.getElementById('arquivoCSV');
 let filmes = [];
 let indice_edicao = null;
 
-// ADICIONAR FILME
+// Adicionar filmes
 form.addEventListener('submit', function (e) {
     e.preventDefault();
 
@@ -42,9 +42,9 @@ function renderizarLista() {
         li.classList.add('card-filme');
 
         li.innerHTML = `
-            <strong>🎬 ${filme.nome}</strong>
-            <p>🎭 Gênero: ${filme.genero}  |  ⭐ Nota: ${filme.nota}/5</p>
-            <p>📅 Lançamento: ${filme.lancamento || 'Não informado'}</p>
+            <strong>&#x1F3AC ${filme.nome}</strong>
+            <p>&#x1F3AD Gênero: ${filme.genero}  |  &#x2B50 Nota: ${filme.nota}/5</p>
+            <p>&#x1F4C5 Lançamento: ${filme.lancamento || 'Não informado'}</p>
             <p style="font-style: italic; color: #aaa;">
                 ${filme.descricao || 'Sem descrição'}
             </p>
@@ -61,7 +61,7 @@ function renderizarLista() {
     });
 }
 
-// EDITAR FILME
+// editar filme
 function editarFilme(index) {
     const filme = filmes[index];
 
@@ -76,7 +76,7 @@ function editarFilme(index) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// APAGAR FILME
+// apagar filme
 function apagarFilme(index) {
     if (confirm('Deseja realmente apagar este filme?')) {
         filmes.splice(index, 1);

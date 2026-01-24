@@ -16,8 +16,8 @@
     --text-muted: #bdbdbd;
     --danger: #8b2c2c;
     --danger-dark: #5f1d1d;
-    --green-edit: #2e7d32; 
-    --green-export: #1b5e20; 
+    --green-edit: #2e7d32;
+    --green-export: #1b5e20;
 }
 
 /* Corpo desse site */
@@ -37,26 +37,26 @@ body::before {
     content: "";
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.65);
+    background: rgba(0, 0, 0, 0.65);
     z-index: -1;
 }
 
-.caixa_grande{
+.caixa_grande {
     display: flex;
     gap: 32px;
     align-items: flex-start;
 }
 
-.formulario{
-    width: 320px;              
+.formulario {
+    width: 320px;
     position: sticky;
-    top: 20px;                  
+    top: 20px;
     padding: 20px;
     border-radius: 12px;
 }
 
 .conteudo_pricipal {
-    flex: 1;                    
+    flex: 1;
 }
 
 h1 {
@@ -159,7 +159,7 @@ textarea {
 
 /* Butões do formulário */
 
-.linha-botoes{
+.linha-botoes {
     display: flex;
     flex-direction: row;
     gap: 12px;
@@ -186,6 +186,7 @@ textarea {
     background-color: #3a3a3a;
     color: #fff;
 }
+
 .btn-exportar {
     background: linear-gradient(135deg, var(--green-export), #017501);
     color: #fff;
@@ -212,14 +213,15 @@ textarea {
     flex: 1 1 100%;
     max-width: 100%;
     width: 100%;
-    min-width: 0; /* MUITO IMPORTANTE */
+    min-width: 0;
+    /* MUITO IMPORTANTE */
     background-color: #2a2a2a;
     color: #ccc;
     border-radius: 8px;
     padding: 6px;
 }
 
-.btna{
+.btna {
     background: #444;
     color: #fff;
     border: 1px solid #555;
@@ -249,10 +251,10 @@ textarea {
     gap: 18px;
 }
 
-strong{
-   font-family: "Rubik Dirt", system-ui;
-   font-weight: 400;
-   font-style: normal;
+strong {
+    font-family: "Rubik Dirt", system-ui;
+    font-weight: 400;
+    font-style: normal;
 }
 
 /* Card */
@@ -293,7 +295,7 @@ strong{
     display: inline-block;
 }
 
-.caixa-do-filme{
+.caixa-do-filme {
     background-color: #2a2a2a;
     border: 1px solid #3a3a3a;
     border-radius: 8px;
@@ -302,7 +304,7 @@ strong{
     text-align: justify;
     line-height: 1.5em;
     color: #d0d0d0;
-    
+
 }
 
 /* Botões da lista de Filmes */
@@ -327,7 +329,7 @@ strong{
     color: #1c1c1c;
 }
 
-.btn-editar:hover{
+.btn-editar:hover {
     filter: brightness(1.2);
     transform: translateY(-2px);
 }
@@ -355,10 +357,11 @@ strong{
 
     .formulario {
         width: 100%;
-        position: static; /* remove o sticky no tablet */
+        position: static;
+        /* remove o sticky no tablet */
     }
 
-    /* O formulário pode ficar um pouco mais largo no tablet */ 
+    /* O formulário pode ficar um pouco mais largo no tablet */
     form {
         max-width: 90%;
     }
@@ -368,30 +371,35 @@ strong{
         max-width: 100%;
         gap: 20px;
     }
-    
+
     .linha-botoes {
-        flex-direction: column; /* Muda de linha para coluna */
+        flex-direction: column;
+        /* Muda de linha para coluna */
     }
 
     .btn {
-        width: 100%; /* Garante que ocupem toda a largura disponível */
+        width: 100%;
+        /* Garante que ocupem toda a largura disponível */
     }
 
     /* Ajuste para que os botões de ação do card não fiquem apertados */
 
     .acoes {
         display: flex;
-        flex-wrap: wrap;      /* Quebra de linha */
-        justify-content: center; 
+        flex-wrap: wrap;
+        /* Quebra de linha */
+        justify-content: center;
         gap: 10px;
     }
 
-    .acoes input[type="file"]{
-        flex: 0 0 100%;       
+    .acoes input[type="file"] {
+        flex: 0 0 100%;
         margin-bottom: 5px;
     }
+
     .acoes button {
-        flex: 1;             /* Os botões dividem a segunda linha */
+        flex: 1;
+        /* Os botões dividem a segunda linha */
         min-width: 100px;
     }
 
@@ -400,7 +408,8 @@ strong{
     }
 
     .acoes-filme button {
-        flex: 1; /* botões crescem*/
+        flex: 1;
+        /* botões crescem*/
     }
 }
 
@@ -415,10 +424,11 @@ strong{
 
     .formulario {
         width: 100%;
-        position: static;       /* remove o sticky */
+        position: static;
+        /* remove o sticky */
     }
-    
-    h1{
+
+    h1 {
         font-size: 1.8em;
     }
 
@@ -429,21 +439,24 @@ strong{
 
     .acoes {
         display: flex;
-        flex-wrap: wrap;      /* Quebra de linha */
+        flex-wrap: wrap;
+        /* Quebra de linha */
         gap: 10px;
     }
 
-    .acoes input[type="file"]{  
+    .acoes input[type="file"] {
         flex: 1 1 100%;
         width: 100%;
         max-width: 100%;
     }
+
     .btna {
         width: 100%;
     }
 
     .acoes button {
-        flex: 1;             /* Os botões dividem a segunda linha */
+        flex: 1;
+        /* Os botões dividem a segunda linha */
         min-width: 0;
     }
 
@@ -456,7 +469,7 @@ strong{
         width: 100%;
     }
 
-    .caixa-do-filme{
+    .caixa-do-filme {
         padding: 8px;
         font-size: 0.9em;
         min-height: 40px;
@@ -466,8 +479,8 @@ strong{
     #descricao {
         min-height: 150px;
     }
-    
-    #listaFilmes li{
+
+    #listaFilmes li {
         padding: 15px;
     }
 }

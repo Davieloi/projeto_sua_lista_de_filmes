@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,19 +9,23 @@
   <link rel="shortcut icon" href="imagens/favicon/claquete.png" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Grenze+Gotisch:wght@100..900&family=Kaushan+Script&family=Luckiest+Guy&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik+Dirt&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Grenze+Gotisch:wght@100..900&family=Kaushan+Script&family=Luckiest+Guy&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik+Dirt&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
 </head>
+
 <body>
   <h1>Catálogo de Filmes</h1>
-  <p class="sub-titulo">Esta página foi desenvolvida para permitir o cadastro, visualização e gerenciamento de filmes através de um formulário interativo</p>
+  <p class="sub-titulo">Esta página foi desenvolvida para permitir o cadastro, visualização e gerenciamento de filmes
+    através de um formulário interativo</p>
   <div class="caixa_grande">
     <aside class="formulario">
       <h2>Informações do Filme</h2>
       <form id="formFilme">
-            <label for="nome">Nome do Filme:</label>
-            <input type="text" name="nome" id="nome" placeholder="Ex: Velozes & Furiosos" required>
-            <label for="genero">Gênero:</label>
-            <input type="text" name="genero" id="genero" placeholder="Ex: Ação/Crime" required>
+        <label for="nome">Nome do Filme:</label>
+        <input type="text" name="nome" id="nome" placeholder="Ex: Velozes & Furiosos" required>
+        <label for="genero">Gênero:</label>
+        <input type="text" name="genero" id="genero" placeholder="Ex: Ação/Crime" required>
         <div class="linha">
           <div class="campo">
             <label for="nota">Nota:</label>
@@ -35,12 +40,13 @@
           </div>
           <div class="campo">
             <label for="lancamento">Lançamento:</label>
-            <input type="number"  name="lancamento" id="lancamento" min="1800" max="2026">
+            <input type="number" name="lancamento" id="lancamento" min="1800" max="2026">
           </div>
         </div>
         <div class="campo">
           <label for="descricao">Descrição:</label>
-          <textarea name="descricao" id="descricao" placeholder="Esse filme conta..." aria-label="Descrição do filme"></textarea>
+          <textarea name="descricao" id="descricao" placeholder="Esse filme conta..."
+            aria-label="Descrição do filme"></textarea>
         </div>
         <div class="linha-botoes">
           <button type="submit" class="btn btn-submit">Adicionar</button>
@@ -50,16 +56,17 @@
     </aside>
     <main class="conteudo_pricipal">
       <div class="lista_da_div">
-          <h2>Lista de Filmes</h2>
-          <div class="acoes">
-              <input type="file" id="arquivoCSV" accept=".csv">
-              <button id="btnImportar" class="btna">Importar</button>
-              <button type="button" id="btnExportar" class="btna">Exportar</button>
-          </div>
-          <ul id="listaFilmes"></ul>
+        <h2>Lista de Filmes</h2>
+        <div class="acoes">
+          <input type="file" id="arquivoCSV" accept=".csv">
+          <button id="btnImportar" class="btna">Importar</button>
+          <button type="button" id="btnExportar" class="btna">Exportar</button>
+        </div>
+        <ul id="listaFilmes"></ul>
       </div>
     </main>
   </div>
   <script src="script.js"></script>
 </body>
+
 </html>

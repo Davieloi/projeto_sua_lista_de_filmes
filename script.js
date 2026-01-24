@@ -33,9 +33,9 @@ function rendenrizar_tela() {
         li.classList.add('card-filme');
 
         li.innerHTML = `
-      <strong>🎬 ${filme.nome}</strong>
-      <p>🎭 Gênero: ${filme.genero}  |  ⭐ Nota: ${filme.nota}/5</p>
-      <p>📅 Lançamento: ${filme.lancamento || 'Não informado'}</p>
+      <strong>&#x1F3AC ${filme.nome}</strong>
+      <p>&#x1F3AD Gênero: ${filme.genero}  |  &#x2B50 Nota: ${filme.nota}/5</p>
+      <p>&#x1F4C5 Lançamento: ${filme.lancamento || 'Não informado'}</p>
       <div class="caixa-do-filme">
           <p style="font-style: italic; color: #aaa;">
               ${filme.descricao || 'Sem descrição'}

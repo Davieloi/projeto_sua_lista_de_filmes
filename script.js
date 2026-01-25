@@ -118,7 +118,7 @@ function processar_csv(e) {
     const conteudo = e.target.result;
     const linhas = conteudo.split("\n");
 
-    for (let i = 0; i < linhas.length; i++) {
+    for (let i = 1; i < linhas.length; i++) {
         if (linhas[i].trim() === "") continue;
 
         const colunas = linhas[i].split(";");

@@ -7,6 +7,8 @@ const ul_filmes = document.getElementById('listaFilmes');
 
 form.addEventListener('submit', adicionar_filme);
 
+let index_edicao = null;
+
 function adicionar_filme(evento) {
     evento.preventDefault();
     // Objeto
@@ -18,7 +20,14 @@ function adicionar_filme(evento) {
         descricao: document.getElementById('descricao').value
     }
 
-    lista_de_filmes.push(novoFilme);
+    if (index_edicao === null) {
+        lista_de_filmes.push(novoFilme);
+    } else {
+        lista_de_filmes[index_edicao] = novoFilme;
+        index_edicao = null; 
+        document.querySelector('.btn-submit').textContent = 'Adicionar';
+    }
+
     rendenrizar_tela();
     form.reset();
 }
@@ -67,8 +76,17 @@ function editarFilme(index) {
     document.getElementById('lancamento').value = filme.lancamento;
     document.getElementById('descricao').value = filme.descricao;
 
-    removerFilme(index);
+    index_edicao = index;
+
+    document.querySelector('.btn-submit').textContent = 'Atualizar Filme';
+   
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+form.addEventListener('reset', () => {
+    index_edicao = null;
+    document.querySelector('.btn-submit').textContent = 'Adicionar';
+});
 
 const exportar = document.getElementById('btnExportar');
 

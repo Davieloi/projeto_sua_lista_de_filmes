@@ -1,7 +1,5 @@
-//  Array
 let lista_de_filmes = [];
 
-// Referência
 const form = document.getElementById('formFilme');
 const ul_filmes = document.getElementById('listaFilmes');
 

@@ -214,7 +214,6 @@ textarea {
     max-width: 100%;
     width: 100%;
     min-width: 0;
-    /* MUITO IMPORTANTE */
     background-color: #2a2a2a;
     color: #ccc;
     border-radius: 8px;
@@ -271,7 +270,7 @@ strong {
     transform: translateY(-4px);
 }
 
-/* Título da lista de filme */
+/* título da lista de filme */
 #listaFilmes li strong {
     font-size: 1.3em;
     color: var(--gold);
@@ -345,7 +344,6 @@ strong {
 }
 
 /* Responsividade com media */
-/* Responsividade para Tablets */
 @media (min-width: 601px) and (max-width: 768px) {
     body {
         padding: 30px;
@@ -358,7 +356,6 @@ strong {
     .formulario {
         width: 100%;
         position: static;
-        /* remove o sticky no tablet */
     }
 
     /* O formulário pode ficar um pouco mais largo no tablet */
@@ -366,7 +363,6 @@ strong {
         max-width: 90%;
     }
 
-    /* Transformar a lista em duas colunas */
     #listaFilmes {
         max-width: 100%;
         gap: 20px;
@@ -374,12 +370,10 @@ strong {
 
     .linha-botoes {
         flex-direction: column;
-        /* Muda de linha para coluna */
     }
 
     .btn {
         width: 100%;
-        /* Garante que ocupem toda a largura disponível */
     }
 
     /* Ajuste para que os botões de ação do card não fiquem apertados */
@@ -387,7 +381,6 @@ strong {
     .acoes {
         display: flex;
         flex-wrap: wrap;
-        /* Quebra de linha */
         justify-content: center;
         gap: 10px;
     }
@@ -409,7 +402,6 @@ strong {
 
     .acoes-filme button {
         flex: 1;
-        /* botões crescem*/
     }
 }
 
@@ -425,7 +417,6 @@ strong {
     .formulario {
         width: 100%;
         position: static;
-        /* remove o sticky */
     }
 
     h1 {
@@ -440,7 +431,6 @@ strong {
     .acoes {
         display: flex;
         flex-wrap: wrap;
-        /* Quebra de linha */
         gap: 10px;
     }
 
@@ -456,7 +446,6 @@ strong {
 
     .acoes button {
         flex: 1;
-        /* Os botões dividem a segunda linha */
         min-width: 0;
     }
 
@@ -475,7 +464,6 @@ strong {
         min-height: 40px;
     }
 
-    /* Seletor corrigido para o textarea (usando o ID) */
     #descricao {
         min-height: 150px;
     }

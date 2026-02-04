@@ -9,7 +9,6 @@ let index_edicao = null;
 
 function adicionar_filme(evento) {
     evento.preventDefault();
-    // Objeto
     const novoFilme = {
         nome: document.getElementById('nome').value,
         genero: document.getElementById('genero').value,
@@ -61,6 +60,7 @@ function rendenrizar_tela() {
 function removerFilme(index) {
 
     lista_de_filmes.splice(index, 1);
+    alert("Filme removido com sucesso!");
 
     rendenrizar_tela();
 };

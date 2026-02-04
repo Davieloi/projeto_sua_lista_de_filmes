@@ -23,22 +23,13 @@
 /* Corpo desse site */
 body {
     font-family: "Roboto", sans-serif;
-    background: linear-gradient(135deg, var(--bg-dark), #1c1c1c);
-    background-image: url('imagens/fundo/fundo_do_site.png');
-    background-size: cover;
-    background-position: center;
+    margin: 0;
+    background-color: var(--bg-dark);
+    background: radial-gradient(circle at top, #2a2a4a 0%, var(--bg-dark) 80%);
     background-attachment: fixed;
     color: var(--text-light);
     min-height: 100vh;
     padding: 40px;
-}
-
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.65);
-    z-index: -1;
 }
 
 .caixa_grande {
